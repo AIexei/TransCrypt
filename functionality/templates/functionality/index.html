@@ -28,14 +28,16 @@
 	    	</div>
 			
 			<div id="main-div" class="col-sm-8 col-sm-offset-2">
-				<form method="get" action="/suka/">
+				<form method="post" action="{% url 'calculations' %}">
+					{% csrf_token %}
+
 			    	<div>
 			    		<div class="row">
 							<p class="paragraph">Select cryptocurrency</p>
 
 							<div class="radio-div">
 								<center>
-									<input type="radio" id="Bitcoin" name="currency" value="Bitcoin">
+									<input type="radio" id="Bitcoin" name="currency" value="Bitcoin" checked>
 									<label for="Bitcoin">Bitcoin</label>
 									
 									<input type="radio" id="Ethereum" name="currency" value="Ethereum">
@@ -74,7 +76,7 @@
 					<div>
 						<div class="row">
 							<center>
-								<button id="submit" type="submit">Submit</button>
+								<button id="submit" type="submit">Calculate</button>
 							</center>
 						</div>
 					</div>
@@ -82,10 +84,8 @@
 
 		    	<hr>
 
-		    	<div>
-		    		<p class="text-center">Expected income: 0.001 Bitcoin/h = 0.305 USD</p>
-		    		<p class="text-center">Today's rate: 1 Bitcoin = 18000 USD</p>
-		    		<p class="text-center">Yesterday's rate: 1 Bitcoin = 17000 USD</p>
+		    	<div id="results">
+					{% include 'functionality/_results.html' %}
 		    	</div>
 	    	</div>
 
@@ -105,5 +105,7 @@
 		<script src="{% static 'libs/countdown/jquery.countdown-ru.js' %}"></script>
 		<script src="{% static 'libs/landing-nav/navigation.js' %}"></script>
 		<script src="{% static 'js/common.js' %}"></script>
+
+		<script src="{% static 'functionality/js/ajax.js' %}"></script>
 	</body>
 </html>

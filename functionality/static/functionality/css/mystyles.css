@@ -68,6 +68,10 @@ hr {
 	border-radius: 100px;
 }
 
+#submit:active {
+    background-color: rgba(7, 54, 185, 0.42);
+}
+
 .text-center {
 	text-align: center;
 }
